@@ -30,13 +30,13 @@ export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseParallelGC"
 # adjust the  Java heap size and other garbage collection related parameters
 # in an attempt to keep garbage collection pauses shorter than <nnn> milliseconds.
 # http://java.sun.com/docs/hotspot/gc5.0/ergo5.html
-# export CATALINA_OPTS="$CATALINA_OPTS -XX:MaxGCPauseMillis=1500"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:MaxGCPauseMillis=1500"
 
 # A hint to the virtual machine that it.s desirable that not more than:
 # 1 / (1 + GCTimeRation) of the application execution time be spent in
 # the garbage collector.
 # http://themindstorms.wordpress.com/2009/01/21/advanced-jvm-tuning-for-low-pause/
-# export CATALINA_OPTS="$CATALINA_OPTS -XX:GCTimeRatio=9"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:GCTimeRatio=9"
 
 # The hotspot server JVM has specific code-path optimizations
 # which yield an approximate 10% gain over the client version.
@@ -44,7 +44,7 @@ export CATALINA_OPTS="$CATALINA_OPTS -server"
 
 # Disable remote (distributed) garbage collection by Java clients
 # and remove ability for applications to call explicit GC collection
-# export CATALINA_OPTS="$CATALINA_OPTS -XX:+DisableExplicitGC"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+DisableExplicitGC"
 
 ## JAVA OPTS
 # export JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.port=9090 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=cor-test.playstrap.com"
