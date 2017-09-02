@@ -1,8 +1,8 @@
 #! /bin/sh
 # discourage address map swapping by setting Xms and Xmx to the same value
 # http://confluence.atlassian.com/display/DOC/Garbage+Collector+Performance+Issues
-export CATALINA_OPTS="$CATALINA_OPTS -Xms4g"
-export CATALINA_OPTS="$CATALINA_OPTS -Xmx8g"
+export CATALINA_OPTS="$CATALINA_OPTS -Xms6g"
+export CATALINA_OPTS="$CATALINA_OPTS -Xmx9g"
 
 # Increase maximum perm size for web base applications to 4x the default amount
 # http://wiki.apache.org/tomcat/FAQ/Memoryhttp://wiki.apache.org/tomcat/FAQ/Memory
@@ -23,20 +23,20 @@ export CATALINA_OPTS="$CATALINA_OPTS -Xss1024k"
 # taken off the CPU. This can have severe consequences if requests continue
 # to accrue during these 'outage' periods. (specifically webservices, webapps)
 # [Also enables adaptive sizing automatically]
-export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseParallelGC"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:CMSFullGCsBeforeCompaction=5 -XX:+UseCMSCompactAtFullCollection -XX:+PrintGCTimeStamps -XX:+PrintGC"
 
 # This is interpreted as a hint to the garbage collector that pause times
 # of <nnn> milliseconds or less are desired. The garbage collector will
 # adjust the  Java heap size and other garbage collection related parameters
 # in an attempt to keep garbage collection pauses shorter than <nnn> milliseconds.
 # http://java.sun.com/docs/hotspot/gc5.0/ergo5.html
-export CATALINA_OPTS="$CATALINA_OPTS -XX:MaxGCPauseMillis=1500"
+# export CATALINA_OPTS="$CATALINA_OPTS -XX:MaxGCPauseMillis=1500"
 
 # A hint to the virtual machine that it.s desirable that not more than:
 # 1 / (1 + GCTimeRation) of the application execution time be spent in
 # the garbage collector.
 # http://themindstorms.wordpress.com/2009/01/21/advanced-jvm-tuning-for-low-pause/
-export CATALINA_OPTS="$CATALINA_OPTS -XX:GCTimeRatio=9"
+# export CATALINA_OPTS="$CATALINA_OPTS -XX:GCTimeRatio=9"
 
 # The hotspot server JVM has specific code-path optimizations
 # which yield an approximate 10% gain over the client version.
@@ -44,7 +44,7 @@ export CATALINA_OPTS="$CATALINA_OPTS -server"
 
 # Disable remote (distributed) garbage collection by Java clients
 # and remove ability for applications to call explicit GC collection
-export CATALINA_OPTS="$CATALINA_OPTS -XX:+DisableExplicitGC"
+# export CATALINA_OPTS="$CATALINA_OPTS -XX:+DisableExplicitGC"
 
 ## JAVA OPTS
 # export JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.port=9090 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=cor-test.playstrap.com"
