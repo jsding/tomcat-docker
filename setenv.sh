@@ -23,7 +23,7 @@ export CATALINA_OPTS="$CATALINA_OPTS -Xss1024k"
 # taken off the CPU. This can have severe consequences if requests continue
 # to accrue during these 'outage' periods. (specifically webservices, webapps)
 # [Also enables adaptive sizing automatically]
-export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:CMSFullGCsBeforeCompaction=5 -XX:+UseCMSCompactAtFullCollection -XX:+PrintGCTimeStamps -XX:+PrintGC"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:+CMSIncrementalMode -XX:+PrintGCApplicationConcurrentTime -XX:CMSFullGCsBeforeCompaction=5 -XX:+UseCMSCompactAtFullCollection -XX:+PrintGCTimeStamps -XX:+PrintGC"
 
 # This is interpreted as a hint to the garbage collector that pause times
 # of <nnn> milliseconds or less are desired. The garbage collector will
