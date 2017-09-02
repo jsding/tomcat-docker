@@ -1,8 +1,8 @@
 #! /bin/sh
 # discourage address map swapping by setting Xms and Xmx to the same value
 # http://confluence.atlassian.com/display/DOC/Garbage+Collector+Performance+Issues
-export CATALINA_OPTS="$CATALINA_OPTS -Xms6g"
-export CATALINA_OPTS="$CATALINA_OPTS -Xmx9g"
+export CATALINA_OPTS="$CATALINA_OPTS -Xms8g"
+export CATALINA_OPTS="$CATALINA_OPTS -Xmx10g"
 
 # Increase maximum perm size for web base applications to 4x the default amount
 # http://wiki.apache.org/tomcat/FAQ/Memoryhttp://wiki.apache.org/tomcat/FAQ/Memory
@@ -23,7 +23,7 @@ export CATALINA_OPTS="$CATALINA_OPTS -Xss1024k"
 # taken off the CPU. This can have severe consequences if requests continue
 # to accrue during these 'outage' periods. (specifically webservices, webapps)
 # [Also enables adaptive sizing automatically]
-export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseG1GC -XX:+PrintGCApplicationConcurrentTime -XX:+PrintGCTimeStamps -XX:+PrintGC"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseG1GC -XX:+PrintGCApplicationStoppedTime -XX:+PrintGCTimeStamps -XX:+PrintGCDetails"
 
 # This is interpreted as a hint to the garbage collector that pause times
 # of <nnn> milliseconds or less are desired. The garbage collector will
