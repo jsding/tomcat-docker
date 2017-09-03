@@ -47,7 +47,7 @@ export CATALINA_OPTS="$CATALINA_OPTS -server"
 # export CATALINA_OPTS="$CATALINA_OPTS -XX:+DisableExplicitGC"
 
 ## JAVA OPTS
-# export JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.port=9090 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=cor-test.playstrap.com"
+export JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.port=9090 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=s1003.playstrap.com"
 
 # Check for application specific parameters at startup
 if [ -r "$CATALINA_BASE/bin/appenv.sh" ]; then
