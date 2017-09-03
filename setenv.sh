@@ -23,7 +23,7 @@ export CATALINA_OPTS="$CATALINA_OPTS -Xss1024k"
 # taken off the CPU. This can have severe consequences if requests continue
 # to accrue during these 'outage' periods. (specifically webservices, webapps)
 # [Also enables adaptive sizing automatically]
-export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseG1GC -XX:+PrintGCApplicationStoppedTime -XX:+PrintGCTimeStamps -XX:+PrintGCDetails"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseG1GC -XX:+PrintGC"
 
 # This is interpreted as a hint to the garbage collector that pause times
 # of <nnn> milliseconds or less are desired. The garbage collector will
@@ -47,7 +47,7 @@ export CATALINA_OPTS="$CATALINA_OPTS -server"
 # export CATALINA_OPTS="$CATALINA_OPTS -XX:+DisableExplicitGC"
 
 ## JAVA OPTS
-export JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.port=9090 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=s1003.playstrap.com"
+export JAVA_OPTS="$JAVA_OPTS -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.port=9090 -Dcom.sun.management.jmxremote.rmi.port=9090 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=172.17.0.2"
 
 # Check for application specific parameters at startup
 if [ -r "$CATALINA_BASE/bin/appenv.sh" ]; then
