@@ -30,7 +30,7 @@ export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseG1GC"
 # adjust the  Java heap size and other garbage collection related parameters
 # in an attempt to keep garbage collection pauses shorter than <nnn> milliseconds.
 # http://java.sun.com/docs/hotspot/gc5.0/ergo5.html
-# export CATALINA_OPTS="$CATALINA_OPTS -XX:MaxGCPauseMillis=1500"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:MaxGCPauseMillis=200 -XX:ParallelGCThreads=20 -XX:ConcGCThreads=5"
 
 # A hint to the virtual machine that it.s desirable that not more than:
 # 1 / (1 + GCTimeRation) of the application execution time be spent in
